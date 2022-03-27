@@ -7,7 +7,6 @@ import 'package:bmi/resources/constants.dart';
 import 'package:bmi/widgets/custom_button.dart';
 import 'package:bmi/widgets/custom_card.dart';
 import 'package:bmi/widgets/custom_round_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
