@@ -1,6 +1,6 @@
 # bmi
 
-A new Flutter project.
+A flutter app with beautiful interactive UI which allows a person to calculate his/her body mass index based on height (in cm) and weight (in Kgs).
 
 ## Getting Started
 
