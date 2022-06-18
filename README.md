@@ -1,6 +1,7 @@
 # bmi
 
 A flutter app with beautiful interactive UI which allows a person to calculate his/her body mass index based on height (in cm) and weight (in Kgs).
+The app calculates the ideal weight you should gain.
 
 ## Getting Started
 
