@@ -1,7 +1,8 @@
 import 'package:bmi/feature/calculate.dart';
-import 'package:bmi/feature/home/components/icon_content.dart';
-import 'package:bmi/feature/home/components/slider_content.dart';
-import 'package:bmi/feature/home/model/enum_gender.dart';
+import 'package:bmi/feature/home/home_screen.dart';
+import 'package:bmi/feature/user_detail/components/icon_content.dart';
+import 'package:bmi/feature/user_detail/components/slider_content.dart';
+import 'package:bmi/feature/user_detail/model/enum_gender.dart';
 import 'package:bmi/feature/result/result.dart';
 import 'package:bmi/resources/constants.dart';
 import 'package:bmi/widgets/custom_button.dart';
@@ -10,14 +11,14 @@ import 'package:bmi/widgets/custom_round_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class BodyHome extends StatefulWidget {
-  const BodyHome({Key? key}) : super(key: key);
+class BodyUserDetails extends StatefulWidget {
+  const BodyUserDetails({Key? key}) : super(key: key);
 
   @override
-  State<BodyHome> createState() => _BodyHomeState();
+  State<BodyUserDetails> createState() => _BodyUserDetailsState();
 }
 
-class _BodyHomeState extends State<BodyHome> {
+class _BodyUserDetailsState extends State<BodyUserDetails> {
   Gender? selectedGender;
   int height = 150;
   int weight = 50;
@@ -169,18 +170,24 @@ class _BodyHomeState extends State<BodyHome> {
         CustomButton(
           label: ConstantTexts.kBUTTON_TEXT_CAL,
           onTap: () {
-            CalculateBMI cal = CalculateBMI(height: height, weight: weight);
 
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => ResultScreen(
-                  bmiResult: cal.calculateResultBMI(),
-                  resultText: cal.getResult(),
-                  interpretation: cal.getInterpretation(),
-                ),
+                builder: (context) => HomeScreen(),
               ),
             );
+            // CalculateBMI cal = CalculateBMI(height: height, weight: weight);
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => ResultScreen(
+            //       bmiResult: cal.calculateResultBMI(),
+            //       resultText: cal.getResult(),
+            //       interpretation: cal.getInterpretation(),
+            //     ),
+            //   ),
+            // );
             // Navigator.pushNamed(context, 'rResult', arguments: {
             //   'bmiResult': cal.calculateResultBMI,
             //   'resultText': cal.getResult,

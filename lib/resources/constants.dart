@@ -62,7 +62,7 @@ class MyColor {
 
 //Strings
 class ConstantTexts {
-  static const String kAPP_NAME = "BMI CALCULATOR";
+  static const String kAPP_NAME = "THIRSTY SIP";
   static const String kGENDER_MALE = "MALE";
   static const String kGENDER_FEMALE = "FEMALE";
   static const String kHEIGHT = "HEIGHT";
@@ -72,6 +72,6 @@ class ConstantTexts {
   static const String kUNIT_WEIGHT = "KG";
   static const String kResult = "Your Result";
 
-  static const String kBUTTON_TEXT_CAL = "CALCULATE";
+  static const String kBUTTON_TEXT_CAL = "SAVE";
   static const String kBUTTON_TEXT_RE_CAL = "RE-CALCULATE";
 }
