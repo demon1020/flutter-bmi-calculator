@@ -8,6 +8,10 @@ class MyTheme {
     appBarTheme: AppBarTheme(
       color: MyColor.kPrimaryColor,
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData().copyWith(
+      foregroundColor: Colors.white,
+      backgroundColor: Colors.blue,
+    )
   );
 
   static TextStyle kMyTextStyle = TextStyle(

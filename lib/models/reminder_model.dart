@@ -7,8 +7,9 @@ class Reminder extends HiveObject{
   Reminder({
     required this.quantity,
     required this.date,
-    required this.isEnabled,
-    required this.isCompleted,
+    this.isEnabled = true,
+    this.isCompleted = false,
+    this.isSelected = false,
   });
   @HiveField(0)
   int quantity;
@@ -18,12 +19,15 @@ class Reminder extends HiveObject{
   bool isEnabled;
   @HiveField(3)
   bool isCompleted;
+  @HiveField(4)
+  bool isSelected;
 
   factory Reminder.fromJson(Map<String, dynamic> json) => Reminder(
     quantity: json["quantity"],
     date: DateTime.parse(json["date"]),
     isEnabled: json["isEnabled"],
     isCompleted: json["isCompleted"],
+    isSelected: json["isSelected"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -31,5 +35,6 @@ class Reminder extends HiveObject{
     "date": date.toIso8601String(),
     "isEnabled": isEnabled,
     "isCompleted": isCompleted,
+    "isSelected": isSelected,
   };
 }

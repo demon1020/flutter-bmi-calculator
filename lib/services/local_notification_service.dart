@@ -83,7 +83,7 @@ class NotificationApi {
     );
   }
 
-  //scheduled notifications
+  //scheduled daily notifications
   static Future showDailyNotification(
       {int id = 0,
       String? title,
@@ -94,7 +94,7 @@ class NotificationApi {
       id,
       title,
       body,
-      _scheduleDaily(Time(8, 30)),
+      _scheduleDaily(Time(scheduledDate.hour,scheduledDate.minute)),
       await _notificationDetails(),
       payload: payload,
       androidAllowWhileIdle: true,

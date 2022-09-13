@@ -1,9 +1,11 @@
+import 'package:bmi/feature/reminder/reminder_screen.dart';
 import 'package:bmi/models/reminder_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 import '../../resources/constants.dart';
+import 'components/add_reminder_sheet.dart';
 import 'home_screen_provider.dart';
 
 // Water (in litres) to drink a day = Your Weight (in Kg) multiplied by 0.033. For example, if you are 60kg, you should drink about 2 litres of water every single day. At 90kg, you'll around about 3 litres of water. All you need to do is multiply 0.033 to your weight in Kg
@@ -18,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     final provider = Provider.of<HomeScreenProvider>(context, listen: false);
-    provider.init();
+    provider.init(context);
     super.initState();
   }
 
@@ -26,9 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Consumer<HomeScreenProvider>(
       builder: (context, provider, child) {
-        final localizations = MaterialLocalizations.of(context);
-        provider.formattedTimeOfDay =
-            localizations.formatTimeOfDay(provider.selectedTime);
         return Scaffold(
           appBar: AppBar(
             title: Text(
@@ -56,12 +55,20 @@ class _HomeScreenState extends State<HomeScreen> {
                           circularStrokeCap: CircularStrokeCap.round,
                           center: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                "Drink Target",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: [
+                                  Text(
+                                    "75",
+                                    style: MyTheme.kNumberStyle,
+                                  ),
+                                  Text(
+                                    "%",style: TextStyle(fontSize: 20),
+                                  ),
+                                ],
                               ),
                               SizedBox(
                                 height: 10,
@@ -79,30 +86,29 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Water Quantity",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Icon(Icons.arrow_back_ios),
-                            Expanded(child: quantitySelector()),
-                            Icon(Icons.arrow_forward_ios),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20),
+                    // Column(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                    //   children: [
+                    //     Text(
+                    //       "Water Quantity",
+                    //       textAlign: TextAlign.left,
+                    //       style: TextStyle(
+                    //         fontSize: 20,
+                    //       ),
+                    //     ),
+                    //     SizedBox(height: 10),
+                    //     Row(
+                    //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //       children: [
+                    //         Icon(Icons.arrow_back_ios),
+                    //         Expanded(child: quantitySelector()),
+                    //         Icon(Icons.arrow_forward_ios),
+                    //       ],
+                    //     ),
+                    //   ],
+                    // ),
+                    SizedBox(height: 30),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,6 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontSize: 20,
                           ),
                         ),
+                        SizedBox(height: 10),
                         recordData(provider.reminderList),
                       ],
                     ),
@@ -121,6 +128,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () async{
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ReminderScreen(),
+                ),
+              );
+              await provider.fetchReminders();
+            },
+            child: provider.showDelete
+                ? Icon(Icons.delete)
+                : Icon(Icons.add),
           ),
         );
       },
@@ -205,6 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
         DateTime now = item.date;
         String formattedTime = DateFormat.jm().format(now);
         return Card(
+          color: Colors.transparent,
           child: ListTile(
             leading: item.isCompleted ? Icon(Icons.done) : Icon(Icons.alarm),
             title: Row(

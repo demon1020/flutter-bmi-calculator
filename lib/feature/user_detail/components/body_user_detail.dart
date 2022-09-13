@@ -70,6 +70,8 @@ class _BodyUserDetailsState extends State<BodyUserDetails> {
         Expanded(
           child: MyCard(
             child: SliderContent(
+              title: ConstantTexts.kHEIGHT,
+              unit: ConstantTexts.kUNIT_HEIGHT,
               value: height,
               onChanged: (newValue) {
                 setState(() {

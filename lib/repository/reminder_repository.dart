@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:bmi/models/reminder_model.dart';
 
-class Repository {
+class ReminderRepository {
   //creating a box reference for Reminder
   Box<Reminder> reminderBox = Hive.box('reminder');
 
@@ -21,7 +21,7 @@ class Repository {
 
   //deleting the reminder
   Future<void> removeReminder(int index) async {
-    reminderBox.deleteAt(index);
-    debugPrint("remove Reminder");
+    await reminderBox.deleteAt(index);
+    debugPrint("Reminder deleted ${index}");
   }
 }

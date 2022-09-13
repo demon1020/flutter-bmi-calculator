@@ -21,13 +21,14 @@ class ReminderAdapter extends TypeAdapter<Reminder> {
       date: fields[1] as DateTime,
       isEnabled: fields[2] as bool,
       isCompleted: fields[3] as bool,
+      isSelected: fields[4] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, Reminder obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.quantity)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class ReminderAdapter extends TypeAdapter<Reminder> {
       ..writeByte(2)
       ..write(obj.isEnabled)
       ..writeByte(3)
-      ..write(obj.isCompleted);
+      ..write(obj.isCompleted)
+      ..writeByte(4)
+      ..write(obj.isSelected);
   }
 
   @override

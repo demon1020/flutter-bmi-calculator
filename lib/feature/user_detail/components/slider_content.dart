@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 class SliderContent extends StatelessWidget {
   final int value;
   final ValueChanged<double>? onChanged;
-  SliderContent({required this.value, required this.onChanged});
+  final String title;
+  final String unit;
+  SliderContent({required this.value, required this.onChanged, required this.title, required this.unit});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class SliderContent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          ConstantTexts.kHEIGHT,
+          title,
           style: MyTheme.kMyTextStyle,
         ),
         Row(
@@ -26,7 +28,7 @@ class SliderContent extends StatelessWidget {
               style: MyTheme.kNumberStyle,
             ),
             Text(
-              ConstantTexts.kUNIT_HEIGHT,
+              unit,
               style: MyTheme.kMyTextStyle,
             ),
           ],
