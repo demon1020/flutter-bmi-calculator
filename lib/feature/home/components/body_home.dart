@@ -23,9 +23,9 @@ class BodyHome extends StatefulWidget {
 
 class _BodyHomeState extends State<BodyHome> {
   Gender? selectedGender;
-  int height = 150;
-  int weight = 199;
-  int age = 99;
+  int height = 160;
+  int weight = 50;
+  int age = 25;
 
   int maxAge = 100;
   int maxWeight = 200;
