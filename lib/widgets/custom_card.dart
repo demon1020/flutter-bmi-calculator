@@ -5,7 +5,13 @@ class MyCard extends StatelessWidget {
   final Color? color;
   final Widget? child;
   final GestureTapCallback? onPressed;
-  MyCard({this.color = MyColor.kActiveCardColor, this.child, this.onPressed});
+  final bool isSelected;
+
+  MyCard(
+      {this.color = MyColor.kActiveCardColor,
+      this.child,
+      this.onPressed,
+      this.isSelected = false});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +23,9 @@ class MyCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(10),
+          border: isSelected
+              ? Border.all(color: MyColor.kResultColor)
+              : Border.all(),
         ),
       ),
     );

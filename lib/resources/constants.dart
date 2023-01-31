@@ -51,6 +51,7 @@ class MyColor {
   static const Color kInactiveCardColor = Color(0xFF111328);
   static const Color kTextColor = Color(0xFF8D8E98);
   static const Color kOverlayColor = Color(0x29EB1555);
+  static const Color kWhiteColor = Color(0xFFFFFFFF);
 
   static const Color kResultColor = Color(0xFF24D876);
   static const Color kResultColorUnder = Colors.orangeAccent;
@@ -74,4 +75,13 @@ class ConstantTexts {
 
   static const String kBUTTON_TEXT_CAL = "CALCULATE";
   static const String kBUTTON_TEXT_RE_CAL = "RE-CALCULATE";
+}
+
+class Message {
+  static const String kMinWeight = "Weight should be greater than 1 KG";
+  static const String kMaxWeight = "Weight should be less than 200 KG";
+  static const String kMinAge = "Age should be greater than 1 Years";
+  static const String kMaxAge = "Age should be less than 100 Years";
+  static const String kGender = "Please select gender";
+
 }
