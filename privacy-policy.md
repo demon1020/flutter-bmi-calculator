@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**App Name:** BMI Calculator  
+**App Name:** BMI CALCULATOR  
 **Developer:** Baburam Nabik
 
 ## Introduction
